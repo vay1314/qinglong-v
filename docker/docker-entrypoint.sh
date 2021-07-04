@@ -42,9 +42,18 @@ if [[ $EnableExtraShell == true ]]; then
   ql extra
 fi
 
+echo -e "======================7. 启动JDC========================\n"
+if [[ $ENABLE_WEB_JDC == true ]]; then
+        pm2 start JDC
+        echo -e "JDC面板启动成功...\n"
+elif [[ $ENABLE_WEB_JDC == false ]]; then
+    echo -e "已设置为不自动启动JDC面板，跳过...\n"
+fi
+
 echo -e "############################################################\n"
 echo -e "容器启动成功..."
 echo -e "\n请先访问5700端口，登录成功面板之后再执行添加定时任务..."
+echo -e "\n请先访问5701端口，登录成功面板之后再执行添加扫码任务..."
 echo -e "############################################################\n"
 
 crond -f >/dev/null

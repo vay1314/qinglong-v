@@ -44,5 +44,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && npm install -g pnpm \
     && rm -rf /root/.npm \
     && pnpm install --prod \
-    && rm -rf /root/.pnpm-store
+    && rm -rf /root/.pnpm-store \
+    && tar zxvf ${QL_DIR}/docker/jdc.tar.gz -C ${QL_DIR} \
+    && chmod 777 ${QL_DIR}/JDC
 ENTRYPOINT ["./docker/docker-entrypoint.sh"]
