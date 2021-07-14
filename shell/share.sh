@@ -260,10 +260,11 @@ update_depend() {
         pip3 install -r $dir_scripts/requirements.txt
     fi
     
-    apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev
-    cd $dir_scripts
-    npm install canvas --build-from-source
-    
+    if [ ! -d "/ql/scripts/node_modules/canvas/" ]; then
+    echo -e "==========Canvas依赖未安装，正在编译安装，请耐心等待==========\n"
+    apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && cd $dir_scripts && npm install canvas --build-from-source
+    fi
+
     cd $dir_current
 }
 
