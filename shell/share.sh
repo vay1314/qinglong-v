@@ -261,7 +261,7 @@ update_depend() {
     fi
     
     if [ ! -d "/ql/scripts/node_modules/canvas/" ]; then
-    echo -e "==========Canvas依赖未安装，正在编译安装，请耐心等待==========\n"
+    echo -e "==========Canvas依赖未安装，编译安装可能稍慢，请耐心等待==========\n"
     echo -e "==============具体安装时间与机器配置以及网速有关==============\n"
     apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && cd $dir_scripts && npm install canvas --build-from-source
     fi
