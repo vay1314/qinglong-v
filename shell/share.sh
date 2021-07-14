@@ -259,7 +259,11 @@ update_depend() {
         cd $dir_scripts
         pip3 install -r $dir_scripts/requirements.txt
     fi
-
+    
+    apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev
+    cd $dir_scripts
+    npm install canvas --build-from-source
+    
     cd $dir_current
 }
 
