@@ -47,6 +47,10 @@ define_program() {
         which_program="node"
     elif [[ $p1 == *.py ]]; then
         which_program="python3"
+    elif [[ $p1 == *.sh ]]; then
+        which_program="bash"
+    elif [[ $p1 == *.ts ]]; then
+        which_program="ts-node-transpile-only"
     else
         which_program=""
     fi
