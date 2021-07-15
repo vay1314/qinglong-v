@@ -6,6 +6,7 @@ dir_shell=/ql/shell
 link_shell
 
 if [ ! -d "/ql/scripts/node_modules/canvas/" ]; then
+mkdir -p /ql/scripts/node_modules
 echo -e "==========Canvas依赖未安装，首次编译安装可能稍慢，请耐心等待==========\n"
 echo -e "==============具体安装时间与机器配置以及网速有关==============\n"
 apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && cd /ql/scripts && npm install canvas --build-from-source
