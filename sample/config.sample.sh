@@ -11,7 +11,7 @@ AutoDelCron="true"
 AutoAddCron="true"
 
 ## ql repo命令拉取脚本时需要拉取的文件后缀，直接写文件后缀名即可
-RepoFileExtensions="js py"
+RepoFileExtensions="js py ts"
 
 ## 由于github仓库拉取较慢，所以会默认添加代理前缀，如不需要请移除
 GithubProxyUrl="https://ghproxy.com/"
