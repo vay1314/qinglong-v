@@ -5,15 +5,15 @@ import CronService from '../services/cron';
 import CookieService from '../services/cookie';
 
 const initData = [
-  //{
-    //name: '更新面板',
-    //command: `ql update`,
-    //schedule: `${randomSchedule(60, 1)} ${randomSchedule(
-      //6,
-      //1,
-    //).toString()} * * *`,
-    //status: CrontabStatus.disabled,
-  //},
+  {
+    name: '更新面板',
+    command: `ql update`,
+    schedule: `${randomSchedule(60, 1)} ${randomSchedule(
+      6,
+      1,
+    ).toString()} * * *`,
+    status: CrontabStatus.disabled,
+  },
   {
     name: '删除日志',
     command: 'ql rmlog 7',
