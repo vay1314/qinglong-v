@@ -379,7 +379,12 @@ gen_list_repo() {
         files=$(echo "$files" | egrep -v $blackword)
     fi
     if [[ $dependence ]]; then
-        eval $cmd | sed 's/^..//' | egrep $dependence | xargs -i cp {} $dir_scripts
+        results=$(eval $cmd | sed 's/^..//' | egrep $dependence)
+        for _file in ${results}; do
+            file_path=$(dirname $_file)
+            make_dir "${dir_scripts}/${file_path}"
+            cp -f $_file "${dir_scripts}/${file_path}"
+        done
     fi
     for file in ${files}; do
         filename=$(basename $file)
@@ -405,17 +410,17 @@ main() {
     log_path="$dir_log/update/${log_time}_$p1.log"
     case $p1 in
     update)
-        update_qinglong "$2" | tee $log_path
+        update_qinglong "$2" | tee -p -a $log_path
         ;;
     extra)
-        run_extra_shell | tee -a $log_path
+        run_extra_shell | tee -p -a $log_path
         ;;
     repo)
         get_user_info
         local name=$(echo "${p2##*/}" | awk -F "." '{print $1}')
         log_path="$dir_log/update/${log_time}_$name.log"
         if [[ -n $p2 ]]; then
-            update_repo "$p2" "$p3" "$p4" "$p5" "$p6" | tee $log_path
+            update_repo "$p2" "$p3" "$p4" "$p5" "$p6" | tee -p -a $log_path
         else
             echo -e "命令输入错误...\n"
             usage
@@ -426,23 +431,23 @@ main() {
         local name=$(echo "${p2##*/}" | awk -F "." '{print $1}')
         log_path="$dir_log/update/${log_time}_$name.log"
         if [[ -n $p2 ]]; then
-            update_raw "$p2" | tee $log_path
+            update_raw "$p2" | tee -p -a $log_path
         else
             echo -e "命令输入错误...\n"
             usage
         fi
         ;;
     rmlog)
-        . $dir_shell/rmlog.sh "$p2" | tee $log_path
+        . $dir_shell/rmlog.sh "$p2" | tee -p -a $log_path
         ;;
     code)
-        . $dir_shell/code.sh
+        . $dir_shell/code.sh | tee -p -a $log_path
         ;;
     bot)
-        . $dir_shell/bot.sh
+        . $dir_shell/bot.sh | tee -p -a $log_path
         ;;
     reset)
-        . $dir_shell/reset.sh
+        . $dir_shell/reset.sh | tee -p -a $log_path
         ;;
     *)
         echo -e "命令输入错误...\n"
