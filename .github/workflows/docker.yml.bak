@@ -34,7 +34,6 @@ jobs:
           script: |
             return context.payload.ref.replace(/\/?refs\/heads\/v/, '')
           result-encoding: string
-
       - name: Docker buildx image and push on release
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
