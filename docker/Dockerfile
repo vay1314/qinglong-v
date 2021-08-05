@@ -7,7 +7,7 @@ ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
     SHELL=/bin/bash \
     PS1="\u@\h:\w \$ " \
     QL_DIR=/ql \
-    ENABLE_WEB_JDC=true
+    ENABLE_WEB_JDC=false
 WORKDIR ${QL_DIR}
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update -f \
@@ -52,9 +52,11 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && rm -rf /root/.npm \
     && pnpm install --prod \
     && rm -rf /root/.pnpm-store \
-    && tar zxvf ${QL_DIR}/docker/jdc.tar.gz -C ${QL_DIR} \
+    && tar zxvf ${QL_DIR}/docker/cdle-jdc/jdc.tar.gz -C ${QL_DIR} \
+    && mkdir -p /ql/config/jdc \
     && chmod 777 ${QL_DIR}/JDC \
     && mkdir -p /ql/scripts/node_modules \
     && cd /ql/scripts \
+    && pip3 install -r /ql/sample/requirements.txt \
     && npm install canvas --build-from-source
 ENTRYPOINT ["./docker/docker-entrypoint.sh"]
