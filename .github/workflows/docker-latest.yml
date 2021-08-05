@@ -1,4 +1,4 @@
-name: Publish Docker Image 2.2-cdle-jdc
+name: Publish Docker Image latest
 on:
     workflow_dispatch:
 
@@ -29,4 +29,4 @@ jobs:
           file: ./docker/cdle-jdc/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: yin26287903/qinglong-v:2.2-cdle-jdc
+          tags: yin26287903/qinglong-v:latest
