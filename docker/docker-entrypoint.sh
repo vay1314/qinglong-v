@@ -50,7 +50,7 @@ if [[ $ENABLE_WEB_JDC == true ]]; then
         pm2 start JDC
         echo -e "JDC面板启动成功...\n"
 elif [[ $ENABLE_WEB_JDC == false ]]; then
-    echo -e "已设置为不自动启动JDC面板，跳过...\n"
+    echo -e "已设置为不自动启动JDC面板...\n"
 fi
 
 echo -e "############################################################\n"
