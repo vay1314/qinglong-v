@@ -1,4 +1,4 @@
-name: Publish Docker Image test
+name: Publish Docker Image 2.2-cdle-jdc
 on:
     workflow_dispatch:
 

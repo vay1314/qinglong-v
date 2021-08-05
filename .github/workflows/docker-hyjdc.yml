@@ -1,4 +1,4 @@
-name: Publish Docker Image latest
+name: Publish Docker Image 2.2-huayu-jdc
 on:
     workflow_dispatch:
 
