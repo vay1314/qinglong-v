@@ -54,7 +54,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && rm -rf /root/.pnpm-store \
     && tar zxvf ${QL_DIR}/docker/cdle-jdc/jdc.tar.gz -C ${QL_DIR} \
     && mkdir -p /ql/config/jdc \
-    && ln -s /ql/conf/config.yaml /ql/config/jdc/config.yaml \
+    && ln -s /ql/conf/config.yaml /ql/config/jdc/config.yaml
     && chmod 777 ${QL_DIR}/JDC \
     && mkdir -p /ql/scripts/node_modules \
     && cd /ql/scripts \
