@@ -247,6 +247,7 @@ usage() {
     echo -e "6. $cmd_update code                                                      # 获取互助码"
     echo -e "6. $cmd_update bot                                                       # 启动tg-bot"
     echo -e "7. $cmd_update reset                                                     # 重置青龙基础环境"
+    echo -e "8. $cmd_update jdc                                                       # 更新并重启JDC"
 }
 
 ## 更新qinglong
@@ -448,6 +449,9 @@ main() {
         ;;
     reset)
         . $dir_shell/reset.sh | tee -p -a $log_path
+        ;;
+    jdc)
+        . $dir_shell/jdc.sh | tee -p -a $log_path
         ;;
     *)
         echo -e "命令输入错误...\n"

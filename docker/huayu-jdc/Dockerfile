@@ -7,6 +7,7 @@ ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
     SHELL=/bin/bash \
     PS1="\u@\h:\w \$ " \
     QL_DIR=/ql \
+    JDC=huayu \
     ENABLE_WEB_JDC=true
 WORKDIR ${QL_DIR}
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \

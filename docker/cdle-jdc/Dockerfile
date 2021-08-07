@@ -7,6 +7,7 @@ ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
     SHELL=/bin/bash \
     PS1="\u@\h:\w \$ " \
     QL_DIR=/ql \
+    JDC=cdle \
     ENABLE_WEB_JDC=false
 WORKDIR ${QL_DIR}
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
@@ -52,8 +53,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && rm -rf /root/.npm \
     && pnpm install --prod \
     && rm -rf /root/.pnpm-store \
-    && tar zxvf ${QL_DIR}/docker/cdle-jdc/jdc.tar.gz -C ${QL_DIR} \
-    && mkdir -p /ql/config/jdc \
+    && tar zxvf ${QL_DIR}/docker/cdle-jdc/xdd.tar.gz -C ${QL_DIR} \
     && chmod 777 ${QL_DIR}/JDC \
     && mkdir -p /ql/scripts/node_modules \
     && cd /ql/scripts \
