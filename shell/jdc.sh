@@ -28,7 +28,7 @@ if [ $JDC = huayu ]; then
     echo "替换JDC"
     mv -f /ql/docker/jdc/JDC /ql
     chmod 777 /ql/JDC
-    rm -rf ql/docker/jdc
+    rm -rf /ql/docker/jdc
     echo "重新启动JDC"
     pm2 restart JDC
 fi
