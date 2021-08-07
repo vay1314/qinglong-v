@@ -6,11 +6,11 @@ if [ $JDC = cdle ]; then
     echo "下载最新XDD压缩包"
     curl -o /ql/docker/xdd/xdd.tar.gz https://raw.githubusercontent.com/vay1314/qinglong-v/master/docker/cdle-jdc/xdd.tar.gz
     echo "解压XDD压缩包"
-    tar -zxf /ql/docker/xdd/xdd.tar.gz JDC -C /ql/docker
+    tar -zxf /ql/docker/xdd/xdd.tar.gz JDC -C /ql/docker/xdd
     echo "停止正在运行的XDD"
     pm2 stop JDC
     echo "替换XDD"
-    mv -f /ql/docker/JDC /ql
+    mv -f /ql/docker/xdd/JDC /ql
     chmod 777 /ql/JDC
     rm -rf /ql/docker/xdd
     echo "重新启动XDD"
@@ -22,11 +22,13 @@ if [ $JDC = huayu ]; then
     echo "下载最新JDC压缩包"
     curl -o /ql/docker/jdc/jdc.tar.gz https://raw.githubusercontent.com/vay1314/qinglong-v/master/docker/huayu-jdc/jdc.tar.gz
     echo "解压JDC压缩包"
-    tar -zxf /ql/docker/jdc/jdc.tar.gz JDC -C /ql/docker
+    tar -zxf /ql/docker/jdc/jdc.tar.gz JDC -C /ql/docker/jdc
     echo "停止正在运行的JDC"
     pm2 stop JDC
     echo "替换JDC"
-    mv -f /ql/docker/JDC /ql
+    mv -f /ql/docker/jdc/JDC /ql
+    chmod 777 /ql/JDC
+    rm -rf ql/docker/jdc
     echo "重新启动JDC"
     pm2 restart JDC
 fi

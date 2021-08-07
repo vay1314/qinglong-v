@@ -239,7 +239,7 @@ run_extra_shell() {
 ## 脚本用法
 usage() {
     echo -e "本脚本用法："
-    echo -e "1. $cmd_update update                                                    # 更新并重启青龙"
+    echo -e "1. $cmd_update update                                                    # 更新并重启青龙(已注释此命令)"
     echo -e "1. $cmd_update extra                                                     # 运行自定义脚本"
     echo -e "3. $cmd_update raw <fileurl>                                             # 更新单个脚本文件"
     echo -e "4. $cmd_update repo <repourl> <path> <blacklist> <dependence> <branch>   # 更新单个仓库的脚本"
@@ -410,9 +410,9 @@ main() {
     log_time=$(date "+%Y-%m-%d-%H-%M-%S")
     log_path="$dir_log/update/${log_time}_$p1.log"
     case $p1 in
-    update)
-        update_qinglong "$2" | tee -p -a $log_path
-        ;;
+#    update)
+#        update_qinglong "$2" | tee -p -a $log_path
+#        ;;
     extra)
         run_extra_shell | tee -p -a $log_path
         ;;
