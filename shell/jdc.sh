@@ -2,34 +2,28 @@
 
 ##判断 JDC类型
 if [ $JDC = cdle ]; then
-    mkdir -p /ql/docker/xdd
-    echo "下载最新XDD压缩包"
-    curl -o /ql/docker/xdd/xdd.tar.gz https://raw.githubusercontent.com/vay1314/qinglong-v/master/docker/cdle-jdc/xdd.tar.gz
-    echo "解压XDD压缩包"
-    tar -zxf /ql/docker/xdd/xdd.tar.gz JDC -C /ql/docker/xdd
-    echo "停止正在运行的XDD"
+    echo "下载最新 XDD 主程序/n"
+    curl -o /ql/sample/cdle/XDD-new https://github.com/vay1314/qinglong-v/raw/master/sample/cdle/XDD
+    echo "停止正在运行的 XDD /n"
     pm2 stop JDC
-    echo "替换XDD"
-    mv -f /ql/docker/xdd/JDC /ql
-    chmod 777 /ql/JDC
-    rm -rf /ql/docker/xdd
-    echo "重新启动XDD"
+    echo "替换 XDD /n"
+    cp -rf /ql/sample/cdle/XDD-new /ql/JDC/JDC
+    chmod 777 /ql/JDC/JDC
+    rm -rf /ql/sample/cdle/XDD-new
+    echo "重新启动 XDD /n"
     pm2 restart JDC
 fi
 
 if [ $JDC = huayu ]; then
-    mkdir -p /ql/docker/jdc
-    echo "下载最新JDC压缩包"
-    curl -o /ql/docker/jdc/jdc.tar.gz https://raw.githubusercontent.com/vay1314/qinglong-v/master/docker/huayu-jdc/jdc.tar.gz
-    echo "解压JDC压缩包"
-    tar -zxf /ql/docker/jdc/jdc.tar.gz JDC -C /ql/docker/jdc
-    echo "停止正在运行的JDC"
+    echo "下载最新 JDC 主程序/n"
+    curl -o /ql/sample/huayu/JDC-new https://github.com/vay1314/qinglong-v/raw/master/sample/huayu/JDC
+    echo "停止正在运行的 JDC /n"
     pm2 stop JDC
-    echo "替换JDC"
-    mv -f /ql/docker/jdc/JDC /ql
-    chmod 777 /ql/JDC
-    rm -rf /ql/docker/jdc
-    echo "重新启动JDC"
+    echo "替换 JDC /n"
+    cp -rf /ql/sample/huayu/JDC-new /ql/JDC/JDC
+    chmod 777 /ql/JDC/JDC
+    rm -rf /ql/sample/huayu/JDC-new
+    echo "重新启动 JDC /n"
     pm2 restart JDC
 fi
 

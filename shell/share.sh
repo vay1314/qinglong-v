@@ -15,6 +15,12 @@ dir_list_tmp=$dir_log/.tmp
 dir_code=$dir_log/code
 dir_update_log=$dir_log/update
 ql_static_repo=$dir_repo/static
+dir_JDC=$dir_root/JDC
+dir_JDC_conf=$dir_JDC/conf
+dir_JDC_static=$dir_JDC/static
+dir_JDC_theme=$dir_JDC/theme
+dir_JDC_scripts=$dir_JDC/scripts
+dir_HY_public=$dir_JDC/public
 
 ## 文件
 file_config_sample=$dir_sample/config.sample.sh
@@ -29,6 +35,13 @@ file_notify_js_sample=$dir_sample/notify.js
 file_notify_py_sample=$dir_sample/notify.py
 file_notify_py=$dir_scripts/notify.py
 file_notify_js=$dir_scripts/sendNotify.js
+file_JDC_config_sample=$dir_sample/config.sample.yaml
+file_JDC_config_user=$dir_JDC_conf/config.yaml
+file_app_sample=$dir_sample/app.sample.conf
+file_app_user=$dir_JDC_conf/app.conf
+file_JDC=$dir_JDC/JDC
+file_HY_config_sample=$dir_sample/config.sample.toml
+file_HY_config_user=$dir_JDC/config.toml
 
 ## 清单文件
 list_crontab_user=$dir_config/crontab.list
@@ -154,6 +167,7 @@ fix_config() {
     make_dir $dir_repo
     make_dir $dir_raw
     make_dir $dir_update_log
+    make_dir $dir_JDC
 
     if [ ! -s $file_config_user ]; then
         echo -e "复制一份 $file_config_sample 为 $file_config_user，随后请按注释编辑你的配置文件：$file_config_user\n"
@@ -196,6 +210,67 @@ fix_config() {
         rm -f /etc/nginx/conf.d/default.conf
         echo
     fi
+    
+    if [ $JDC = cdle ]; then
+        make_dir $dir_JDC_conf
+        if [ ! -s $file_JDC_config_user ]; then
+             echo -e "复制一份 $file_JDC_config_sample 为 $file_JDC_config_user，随后请按注释编辑 XDD 配置文件：$file_JDC_config_user\n"
+             cp -fv $file_JDC_config_sample $file_JDC_config_user
+             cp -fv $file_app_sample $file_app_user
+             echo
+        fi
+        
+        if [[ ! -d $dir_JDC_static ]]; then
+             echo -e "生成 XDD 静态资源文件夹\n"
+             mkdir -p $dir_JDC_static
+             cp -rf /ql/sample/cdle/static/* $dir_JDC_static
+             echo
+        fi
+        
+        if [[ ! -d $dir_JDC_theme ]]; then
+             echo -e "生成 XDD 主题文件夹\n"
+             mkdir -p $dir_JDC_theme
+             cp -rf /ql/sample/cdle/theme/* $dir_JDC_theme
+             echo
+        fi
+        
+        if [[ ! -d $dir_JDC_scripts ]]; then
+             echo -e "生成 XDD 脚本文件夹\n"
+             mkdir -p $dir_JDC_scripts
+             echo
+        fi
+        
+        if [ ! -s $file_JDC ]; then
+             echo -e "复制XDD主程序"
+             cp -fv /ql/sample/cdle/XDD $file_JDC
+             chmod 777 $file_JDC
+             echo
+        fi
+        
+    fi
+    
+    if [ $JDC = huayu ]; then
+        if [ ! -s $file_HY_config_user ]; then
+             echo -e "复制一份 $file_HY_config_sample 为 $file_HY_config_user，随后请按注释编辑 JDC 配置文件：$file_HY_config_user\n"
+             cp -fv $file_HY_config_sample $file_HY_config_user
+             echo
+        fi
+        
+        if [[ ! -d $dir_HY_public ]]; then
+             echo -e "生成 JDC 静态资源文件\n"
+             cp -rf /ql/sample/huayu/public/* $dir_HY_public
+             echo
+        fi
+        
+        if [ ! -s $file_JDC ]; then
+             echo -e "复制XDD主程序"
+             cp -fv /ql/sample/huayu/JDC $file_JDC
+             chmod 777 $file_JDC
+             echo
+        fi
+        
+    fi
+    
 }
 
 ## npm install 子程序，判断是否为安卓，判断是否安装有pnpm

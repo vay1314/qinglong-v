@@ -47,6 +47,7 @@ fi
 
 echo -e "======================7. 启动JDC========================\n"
 if [[ $ENABLE_WEB_JDC == true ]]; then
+        cd /ql/JDC
         pm2 start JDC
         echo -e "JDC面板启动成功...\n"
 elif [[ $ENABLE_WEB_JDC == false ]]; then
