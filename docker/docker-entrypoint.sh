@@ -60,7 +60,6 @@ echo -e "\n请先访问5700端口，登录成功面板之后再执行添加定�
 
 if [[ $JDC == cdle ]]; then
         echo -e "\n请先访问5702端口，登录成功面板之后再执行添加扫码任务..."
-        echo -e "\n如容器映射了/ql/conf文件夹，则容器内端口号为app.conf内配置的端口号"
 fi
 
 if [[ $JDC == huayu ]]; then
