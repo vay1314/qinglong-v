@@ -3,7 +3,7 @@
 ##判断 JDC类型
 if [ $JDC = cdle ]; then
     echo "下载最新 XDD 主程序/n"
-    curl -o /ql/sample/cdle/XDD-new https://github.com/vay1314/qinglong-v/raw/master/sample/cdle/XDD
+    wget https://github.com/vay1314/qinglong-v/raw/master/sample/cdle/XDD -O /ql/sample/cdle/XDD-new
     echo "停止正在运行的 XDD /n"
     pm2 stop JDC
     echo "替换 XDD /n"
@@ -16,7 +16,7 @@ fi
 
 if [ $JDC = huayu ]; then
     echo "下载最新 JDC 主程序/n"
-    curl -o /ql/sample/huayu/JDC-new https://github.com/vay1314/qinglong-v/raw/master/sample/huayu/JDC
+    wget https://github.com/vay1314/qinglong-v/raw/master/sample/huayu/JDC -O /ql/sample/huayu/JDC-new
     echo "停止正在运行的 JDC /n"
     pm2 stop JDC
     echo "替换 JDC /n"
