@@ -6,11 +6,11 @@ const titleMap: any = {
   '/': '控制面板',
   '/login': '登录',
   '/crontab': '定时任务',
-  '/cookie': 'Session管理',
+  '/cookie': 'Cookie管理',
   '/config': '配置文件',
-  '/diy': '自定义脚本',
+  '/diy': '自启脚本',
   '/diff': '对比工具',
-  '/log': '日志',
+  '/log': '日志查看',
   '/setting': '系统设置',
 };
 

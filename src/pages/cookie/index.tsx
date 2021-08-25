@@ -449,7 +449,7 @@ const Config = () => {
   return (
     <PageContainer
       className="session-wrapper"
-      title="Session管理"
+      title="Cookie管理"
       extra={[
         <Button key="2" type="primary" onClick={() => addCookie()}>
           添加Cookie

@@ -26,7 +26,7 @@ export default {
       },
       {
         path: '/cookie',
-        name: 'Session管理',
+        name: 'Cookie管理',
         icon: <RadiusSettingOutlined />,
         component: '@/pages/cookie/index',
       },
@@ -38,7 +38,7 @@ export default {
       },
       {
         path: '/diy',
-        name: '自定义脚本',
+        name: '自启脚本',
         icon: <FormOutlined />,
         component: '@/pages/diy/index',
       },
@@ -50,7 +50,7 @@ export default {
       },
       {
         path: '/log',
-        name: '日志',
+        name: '日志查看',
         icon: <FolderOutlined />,
         component: '@/pages/log/index',
       },
