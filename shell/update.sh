@@ -137,7 +137,7 @@ add_cron() {
             cron_name=$(grep "new Env" $file | awk -F "\(" '{print $2}' | awk -F "\)" '{print $1}' | sed 's:^.\(.*\).$:\1:' | head -1)
             [[ -z $cron_name ]] && cron_name="$file_name"
             [[ -z $cron_line ]] && cron_line=$(grep "cron:" $file | awk -F ":" '{print $2}' | xargs)
-            [[ -z $cron_line ]] && cron_line="0 6 * * *"
+            [[ -z $cron_line ]] && cron_line="$default_cron"
             result=$(add_cron_api "$cron_line:$cmd_task $file:$cron_name")
             echo -e "$result"
             if [[ $detail ]]; then
@@ -210,7 +210,7 @@ update_raw() {
         cron_name=$(grep "new Env" $raw_file_name | awk -F "\(" '{print $2}' | awk -F "\)" '{print $1}' | sed 's:^.\(.*\).$:\1:' | head -1)
         [[ -z $cron_name ]] && cron_name="$raw_file_name"
         [[ -z $cron_line ]] && cron_line=$(grep "cron:" $raw_file_name | awk -F ":" '{print $2}' | xargs)
-        [[ -z $cron_line ]] && cron_line="0 6 * * *"
+        [[ -z $cron_line ]] && cron_line="$default_cron"
         if [[ -z $cron_id ]]; then
             result=$(add_cron_api "$cron_line:$cmd_task $filename:$cron_name")
             echo -e "$result"

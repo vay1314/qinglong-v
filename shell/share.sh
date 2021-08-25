@@ -76,6 +76,7 @@ import_config() {
     github_proxy_url=${GithubProxyUrl:-""}
     block_cookie=${TempBlockCookie:-""}
     file_extensions=${RepoFileExtensions:-"js py"}
+    default_cron="$(random_range 0 59) $(random_range 0 23) * * *"
 }
 
 ## 创建目录，$1：目录的绝对路径
@@ -310,6 +311,13 @@ npm_install_2() {
         npm_install_1 $dir_work
     fi
     cd $dir_current
+}
+
+## 生成随机时间
+random_range() {
+    local beg=$1
+    local end=$2
+    echo $((RANDOM % ($end - $beg) + $beg))
 }
 
 ## 比对两个文件，$1比$2新时，将$1复制为$2
