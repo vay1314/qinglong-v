@@ -258,7 +258,6 @@ fix_config() {
         
         if [[ ! -d $dir_HY_public ]]; then
              echo -e "生成 JDC 静态资源文件\n"
-             mkdir -p $dir_HY_public
              cp -rf /ql/sample/huayu/public/* $dir_HY_public
              echo
         fi
